@@ -15,7 +15,8 @@ the horizontal and vertical screen buffers increased, and the command-line windo
 * Text wrap needs to be disabled manually.
 * Usage of fonts that do not have glyphs which are exactly twice the height as they are wide will
 result in distorted images.
-* The filename needs to be entered in the source code and cannot be changed without compiling.
+* The filename needs to be entered in the source code and cannot be changed without compiling. 
+Currently, the program tries to open `"TestImage.bmp"`.
 
 ## Todo list
 
