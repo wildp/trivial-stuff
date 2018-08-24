@@ -140,8 +140,11 @@ namespace print
 		{
 			for (uint32_t x{ 0 }; x < width; ++x)
 			{
-				static int64_t index1{ x + ((height - y - 1) * width) };
-				static int64_t index2{ x + ((height - y - 2) * width) };
+				static int64_t index1;
+				static int64_t index2;
+
+				index1 =  x + ((height - y - 1) * width);
+				index2 =  x + ((height - y - 2) * width);
 
 				setcolor(data[index1].red, data[index1].green, data[index1].blue, false);
 
