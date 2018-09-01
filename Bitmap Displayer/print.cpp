@@ -103,34 +103,41 @@ namespace print
 		return;
 	}
 	
-	inline void setcolorF(uint8_t red, uint8_t green, uint8_t blue)
+	inline void fillcode(std::wstring &existingcode, bmp::colorBGRA color)
+	{
+		extendcodeS(existingcode, color.red);
+		extendcodeS(existingcode, color.green);
+		extendcode(existingcode, color.blue);
+		existingcode.append(L"m");
+		return;
+	}
+
+	inline std::wstring getcolorFG(bmp::colorBGRA color)
 	{
 		std::wstring output{ ESC,'[','3','8',';','2',';' };
-	
-		extendcodeS(output, red);
-		extendcodeS(output, green);
-		extendcode(output, blue);
-		output.append(L"m");
-	
-		std::wcout << output;
-	
-		return;
+		fillcode(output, color);
+		return output;
 	}
-	
-	inline void setcolorB(uint8_t red, uint8_t green, uint8_t blue)
+
+	inline std::wstring getcolorBG(bmp::colorBGRA color)
 	{
 		std::wstring output{ ESC,'[','4','8',';','2',';' };
-	
-		extendcodeS(output, red);
-		extendcodeS(output, green);
-		extendcode(output, blue);
-		output.append(L"m");
-	
-		std::wcout << output;
-	
+		fillcode(output, color);
+		return output;
+	}
+
+	inline void setcolorFG(bmp::colorBGRA color)
+	{
+		std::wcout << getcolorFG(color);
 		return;
 	}
 	
+	inline void setcolorBG(bmp::colorBGRA color)
+	{
+		std::wcout << getcolorBG(color);
+		return;
+	}
+
 	inline void setmode(bool isWide)
 	{
 		std::cerr << std::flush;
@@ -173,8 +180,8 @@ namespace print
 	
 				for (uint32_t x{ 0 }; x < width; ++x)
 				{
-					setcolorF(data[index1].red, data[index1].green, data[index1].blue);
-					setcolorB(data[index2].red, data[index2].green, data[index2].blue);
+					setcolorFG(data[index1]);
+					setcolorBG(data[index2]);
 					std::wcout << BLOCK;
 	
 					++index1;
@@ -188,10 +195,10 @@ namespace print
 	
 				index1 = 0 + ((height - y - 1) * width);
 	
-				setcolorB(0, 0, 0);
+				setcolorBG(bmp::colorBGRA{0, 0, 0, 255});
 				for (uint32_t x{ 0 }; x < width; ++x)
 				{
-					setcolorF(data[index1].red, data[index1].green, data[index1].blue);
+					setcolorFG(data[index1]);
 					std::wcout << BLOCK;
 	
 					++index1;
@@ -207,18 +214,21 @@ namespace print
 		auto end = std::chrono::system_clock::now();
 		auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 	
-		//std::cout << "\nTime taken: " << duration.count() << " ms\n\n";
+		std::cout << "\nTime taken: " << duration.count() << " ms\n\n";
 	
 		return;
 	}
-	/*
-	void ibitmap(const bmp::image &image, bmp::ipixeldata &idata)
+	
+	void bitmap(const bmp::image &image, bmp::i1pixeldata &idata)
 	{
-		auto start = std::time(0);
+		auto start{ std::chrono::system_clock::now() };
 
 		setmode(true);
 		uint32_t width{ image.info.width };
 		uint32_t height{ image.info.height };
+
+		std::wstring colorFG[2]{ getcolorFG(image.ctab[0]), getcolorFG(image.ctab[1]) };
+		std::wstring colorBG[2]{ getcolorBG(image.ctab[0]), getcolorBG(image.ctab[1]) };
 
 		// The extracted data in &data has been inverted vertically
 		for (uint32_t y{ 0 }; y < height; y += 2)
@@ -227,16 +237,12 @@ namespace print
 			{
 				static unsigned int index1;
 				static unsigned int index2;
-
 				index1 = 0 + ((height - y - 1) * width);
 				index2 = 0 + ((height - y - 2) * width);
 
 				for (uint32_t x{ 0 }; x < width; ++x)
 				{
-					setcolorF(data[index1].red, data[index1].green, data[index1].blue);
-					setcolorB(data[index2].red, data[index2].green, data[index2].blue);
-					std::wcout << BLOCK;
-
+					std::wcout << colorFG[idata[index1]] << colorBG[idata[index2]]  << BLOCK;
 					++index1;
 					++index2;
 				}
@@ -245,15 +251,12 @@ namespace print
 			if (((height - y - 2) * width) >= idata.size())
 			{
 				static unsigned int index1;
-
 				index1 = 0 + ((height - y - 1) * width);
+				setcolorBG(bmp::colorBGRA{ 0, 0, 0, 255 });
 
-				setcolorB(0, 0, 0);
 				for (uint32_t x{ 0 }; x < width; ++x)
 				{
-					setcolorF(data[index1].red, data[index1].green, data[index1].blue);
-					std::wcout << BLOCK;
-
+					std::wcout << colorFG[idata[index1]] << BLOCK;
 					++index1;
 				}
 			}
@@ -264,11 +267,11 @@ namespace print
 		std::wcout << reset;
 		setmode(false);
 
-		auto end = std::time(0);
-		auto duration = end - start;
+		auto end = std::chrono::system_clock::now();
+		auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
-		std::cout << "\nTime taken: " << duration << "\n\n";
+		std::cout << "\nTime taken: " << duration.count() << " ms\n\n";
 
 		return;
-	}*/
+	}
 }
