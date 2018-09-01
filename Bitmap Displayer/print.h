@@ -5,7 +5,8 @@ namespace print
 {
 	void setup();
 	void bitmap(const bmp::image &image, bmp::pixeldata &data);
-	//void ibitmap(const bmp::image &image, bmp::ipixeldata &idata);
+	void bitmap(const bmp::image &image, bmp::i1pixeldata &i1data);
+	//void bitmap(const bmp::image &image, bmp::i8pixeldata &i8data);
 }
 
 
