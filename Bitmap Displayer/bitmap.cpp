@@ -11,7 +11,7 @@
 constexpr bool convert_first{ true };
 
 // Allows for the direct printing of bin;
-std::ostream& operator<<(std::ostream &out, bin &data)
+std::ostream& operator<<(std::ostream &out, const bin &data)
 {
 	out << std::hex;
 	for (auto dat : data)
@@ -23,7 +23,7 @@ std::ostream& operator<<(std::ostream &out, bin &data)
 }
 
 // Allows for the printing of the file header struct
-std::ostream& operator<<(std::ostream &out, bmp::fileheader &header)
+std::ostream& operator<<(std::ostream &out, const bmp::fileheader &header)
 {
 	out << "File Header:\n";
 	out << "    File Type:    " << header.file_type[0]   << 
@@ -36,7 +36,7 @@ std::ostream& operator<<(std::ostream &out, bmp::fileheader &header)
 }
 
 // Allows for the printing of the info header struct
-std::ostream& operator<<(std::ostream &out, bmp::infoheader &header)
+std::ostream& operator<<(std::ostream &out, const bmp::infoheader &header)
 {
 	out << "Info Header:\n";
 	out << "    Header Size:  " << header.header_size    << '\n';
@@ -53,7 +53,7 @@ std::ostream& operator<<(std::ostream &out, bmp::infoheader &header)
 }
 
 // Allows for an individual entry in a color table to be printed
-std::ostream& operator<<(std::ostream &out, bmp::colorBGRA &entry)
+std::ostream& operator<<(std::ostream &out, const bmp::colorBGRA &entry)
 {
 	out << std::hex;
 	out << std::setfill('0') << std::setw(2) << static_cast<int>(entry.alpha) << ' ';
@@ -65,7 +65,7 @@ std::ostream& operator<<(std::ostream &out, bmp::colorBGRA &entry)
 }
 
 // Allows for an entire color table to be printed along with the index of each color
-std::ostream& operator<<(std::ostream &out, bmp::colortable &ct)
+std::ostream& operator<<(std::ostream &out, const bmp::colortable &ct)
 {
 	auto decwidth{ std::string{std::to_string(ct.size())}.size() };
 	auto hexwidth{ std::string{ std::to_string(((ct.size()) / 16)) }.size() }; // this may be wrong
@@ -87,7 +87,7 @@ std::ostream& operator<<(std::ostream &out, bmp::colortable &ct)
 
 // Allows for the printing of the image struct
 
-std::ostream& operator<<(std::ostream &out, bmp::image &image)
+std::ostream& operator<<(std::ostream &out, const bmp::image &image)
 {
 	out << "BITMAP IMAGE:\n\n" << image.file << '\n' << image.info << '\n';
 	out << image.ctab << "\nPixel Data:\n" << image.data << "\n\n";
@@ -97,15 +97,20 @@ std::ostream& operator<<(std::ostream &out, bmp::image &image)
 namespace bmp
 {
 	// Converts 4 uint8_t in order into 1 uint32_t
-	uint32_t convert4(const uint8_t &byte4, const uint8_t &byte3, const uint8_t &byte2, const uint8_t &byte1)
+	inline uint32_t convert4(const uint8_t &byte4, const uint8_t &byte3, const uint8_t &byte2, const uint8_t &byte1)
 	{
 		return (static_cast<uint32_t>(byte1) * 16777216) + (static_cast<uint32_t>(byte2) * 65536) + (static_cast<uint32_t>(byte3) * 256) + static_cast<uint32_t>(byte4);
 	}
 
 	// Converts 2 uint8_t in order into 1 uint16_t
-	uint16_t convert2(const uint8_t &byte2, const uint8_t &byte1)
+	inline uint16_t convert2(const uint8_t &byte2, const uint8_t &byte1)
 	{
 		return (static_cast<uint16_t>(byte1) * 256) + static_cast<uint16_t>(byte2);
+	}
+
+	inline uint8_t convertH(const bool &bit4, const bool &bit3, const bool &bit2, const bool &bit1)
+	{
+		return (static_cast<uint32_t>(bit1) * 8) + (static_cast<uint32_t>(bit2) * 4) + (static_cast<uint32_t>(bit3) * 2) + static_cast<uint32_t>(bit4);
 	}
 
 	// Extracts the image into a (slightly) more useable format
@@ -175,51 +180,145 @@ namespace bmp
 
 	void generate1(const bmp::image &image, bmp::i1pixeldata &i1data)
 	{
+		uint32_t counter{ 0 };
+		int32_t cooldown{ 0 };
 		for (auto byte : image.data)
 		{
 			std::bitset<8> b{ byte };
-			for (int i{ 0 }; i < 8; i++)
-				i1data.push_back(b[i]);
+			// data is little endian so extract byte in reverse
+			for (int i{ 7 }; i >= 0; i--)
+			{
+				if (cooldown == 0)
+				{
+					counter++;
+					i1data.push_back(b[i]);
+				}
+				else
+					cooldown--;
+
+				if (counter >= image.info.width)
+				{
+					cooldown = ((counter % 32) == 0) ? 0 : (32 - (counter % 32));
+					counter = 0;
+				}
+			}
 		}
+		return;
 	}
 
 	void generate8(const bmp::image &image, bmp::i8pixeldata &i8data)
 	{
+		if (image.info.bits_per_pixel == 1)
+		{
+			unsigned int counter{ 0 };
+			int cooldown{ 0 };
+			for (auto byte : image.data)
+			{
+				std::bitset<8> b{ byte };
+				// data is little endian so extract byte in reverse
+				for (int i{ 7 }; i >= 0; i--)
+				{
+					if (cooldown == 0)
+					{
+						counter++;
+						i8data.push_back(b[i]);
+					}
+					else
+						cooldown--;
+
+					if (counter >= image.info.width)
+					{
+						cooldown = ((counter % 32) == 0) ? 0 : (32 - (counter % 32));
+						counter = 0;
+					}
+				}
+			}
+		}
+
+		if (image.info.bits_per_pixel == 4)
+		{
+			unsigned int counter{ 0 };
+			int cooldown{ 0 };
+			for (auto byte : image.data)
+			{
+				std::bitset<8> b{ byte };
+				// data is little endian so extract byte in reverse
+				for (int i{ 1 }; i >= 0; i--)
+				{
+					if (cooldown == 0)
+					{
+						counter++;
+						i8data.push_back(convertH(b[(4 * i)], b[(4 * i) + 1], b[(4 * i) + 2], b[(4 * i) + 3]));
+					}
+					else
+						cooldown--;
+
+					if (counter >= image.info.width)
+					{
+						cooldown = ((counter % 8) == 0) ? 0 : (8 - (counter % 8));
+						counter = 0;
+					}
+				}
+			}
+		}
+
 		if (image.info.bits_per_pixel == 8)
 		{
+			unsigned int counter{ 0 };
 			for (unsigned int i{ 0 }; i < image.data.size(); i++)
+			{
+				//if (i > image.data.size())
+				counter++;
 				i8data.push_back(image.data[i]);
+
+				// System to allow for the skipping of 4-byte padding
+				if (counter >= image.info.width)
+				{
+					i += ((counter % 4) == 0) ? 0 : (4 - (counter % 4));
+					counter = 0;
+				}
+			}
 		}
 		return;
 	}
 
 	void generate24(const bmp::image &image, bmp::pixeldata &data)
 	{
-		if (image.info.bits_per_pixel == 1)
-		{
-			bmp::i1pixeldata idata{};
-			generate1(image, idata);
-			for (auto entry : idata)
-				data.push_back(image.ctab[entry]);
-		}
-		if (image.info.bits_per_pixel == 8)
+		if (image.info.bits_per_pixel == 8 || image.info.bits_per_pixel == 4 || image.info.bits_per_pixel == 1)
 		{
 			bmp::i8pixeldata idata{};
 			generate8(image, idata);
 			for (auto entry : idata)
 				data.push_back(image.ctab[entry]);
 		}
-		if (image.info.bits_per_pixel == 24)
+		else if (image.info.bits_per_pixel == 24)
 		{
-			for (unsigned int i{ 0 }; i < (image.data.size() / 3); i++)
-				data.push_back({ image.data[(i * 3)], image.data[(i * 3) + 1], image.data[(i * 3) + 2], 255 });
+			uint32_t counter{ 0 };
+			for (unsigned int i{ 0 }; i < image.data.size(); i += 3)
+			{
+				//if (i > image.data.size())
+				counter++;
+				data.push_back({ image.data[i], image.data[i + 1], image.data[i + 2], 255 });
+
+				// System to allow for the skipping of 4-byte padding
+				if (counter >= image.info.width)
+				{
+					i += ((counter % 4) == 0) ? 0 : (4 - ((counter * 3) % 4));
+					counter = 0;
+				}
+			}
 		}
 		return;
 	}
 
 	void render(const bmp::image &image)
 	{
-
+		if (image.info.bits_per_pixel == 1)
+		{
+			bmp::i1pixeldata idata;
+			bmp::generate1(image, idata);
+			return print::bitmap(image, idata);
+		}
 		if ((image.info.bits_per_pixel == 24) || (convert_first))
 		{
 			bmp::pixeldata data;
