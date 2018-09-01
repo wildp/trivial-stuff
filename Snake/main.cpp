@@ -223,7 +223,7 @@ void renderGame(const handleHolder &hand, const Coordinate &gridSize, const Coor
 
 	static Coordinate food{ snakeFood };
 	static Coordinate snakeEnd{ 0, 0 };
-	static unsigned int snakeLength{ snakeTrail.size() };
+	static auto snakeLength{ snakeTrail.size() };
 
 	static bool mapInit{ false };
 	static bool foodRendered{ false };
@@ -300,7 +300,7 @@ void renderGame(const handleHolder &hand, const Coordinate &gridSize, const Coor
 	DWORD charsWritten;
 	std::string write{ "Current Score: " };
 	write.append(std::to_string(snakeLength - 3));
-	WriteConsole(hand.out, write.c_str(), write.length(), &charsWritten, NULL);
+	WriteConsole(hand.out, write.c_str(), static_cast<unsigned int>(write.length()), &charsWritten, NULL);
 }
 
 int game(const handleHolder &hand, Coordinate gridSize, const short &gameSpeed)
@@ -377,40 +377,46 @@ int game(const handleHolder &hand, Coordinate gridSize, const short &gameSpeed)
 	} while (inGame);
 
 	cls(hand, LINES_CLEARED);
-	return (snakeTrail.size() - 3);
+	return (static_cast<int>(snakeTrail.size() - 3));
 }
 
 void setup(const handleHolder &hand, bool undo = false, COORD size = { 84, 30 })
 {
 	CONSOLE_CURSOR_INFO cursorInfo;
 	GetConsoleCursorInfo(hand.out, &cursorInfo);
+	static const CONSOLE_CURSOR_INFO cursorInfoOriginal{ cursorInfo };
 
 	CONSOLE_SCREEN_BUFFER_INFO bufferInfo;
 	GetConsoleScreenBufferInfo(hand.out, &bufferInfo);
-
-	static const CONSOLE_CURSOR_INFO cursorInfoOriginal{ cursorInfo };
 	static const CONSOLE_SCREEN_BUFFER_INFO bufferInfoOriginal{ bufferInfo };
+
+	static COORD windowSize = { bufferInfo.srWindow.Right - bufferInfo.srWindow.Left + 1, bufferInfo.srWindow.Bottom - bufferInfo.srWindow.Top + 1 };
+	std::cout << windowSize.X << " " << windowSize.Y << '\n';
 
 	if (undo == false)
 	{
-		
 		SetConsoleTitle("Snake");
 		cursorInfo.bVisible = false;
 		SetConsoleCursorInfo(hand.out, &cursorInfo);
 
-		//const COORD newBufferSize{ size.X + 2, size.Y + 2 };
-		//std::cout << SetConsoleScreenBufferSize(hand.out, newBufferSize) << ' ' << __LINE__ << '\t';
-
-		//const SMALL_RECT newWindowSize{ 0, 0, size.X, size.Y};
-		//std::cout << SetConsoleWindowInfo(hand.out, true, &newWindowSize) << ' ' << __LINE__ << '\t';
-		cls(hand, LINES_CLEARED);
+		SMALL_RECT info = { 0, 0, size.X - 1, size.Y - 1 };
+		std::cout << SetConsoleWindowInfo(hand.out, TRUE, &info);
+		std::cout << SetConsoleScreenBufferSize(hand.out, size);
+		std::cout << SetConsoleWindowInfo(hand.out, TRUE, &info);
 	}
-	else
+	else if (undo == true)
 	{
-		cls(hand, LINES_CLEARED);
 		SetConsoleCursorInfo(hand.out, &cursorInfoOriginal);
-		//SetConsoleScreenBufferSize(hand.out, bufferInfo.dwSize);
+
+		SMALL_RECT info = { 0, 0, windowSize.X - 1, windowSize.Y - 1 };
+		std::cout << SetConsoleWindowInfo(hand.out, TRUE, &info);
+		std::cout << SetConsoleScreenBufferSize(hand.out, {windowSize.X, 9001});
+		std::cout << SetConsoleWindowInfo(hand.out, TRUE, &info);
+		// + delete input while in game
 	}
+
+	//Sleep(1000);
+	return cls(hand, LINES_CLEARED);
 }
 
 int main()
@@ -423,7 +429,7 @@ int main()
 	hand.hwnd = GetConsoleWindow();
 
 	setup(hand);
-	mainMenu(hand);
+mainMenu(hand);
 	helpMenu(hand);
 
 	int score{ 0 };
@@ -438,4 +444,5 @@ int main()
 
 	setup(hand, true);
 	std::cout << "Best score this session: " << scoreBest << " points.";
+	return 0;
 }
