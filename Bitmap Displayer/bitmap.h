@@ -72,16 +72,18 @@ namespace bmp
 
 	int extract(const bin &data, bmp::image &image);
 
+	void generate1(const bmp::image &image, bmp::i1pixeldata &i1data);
+	void generate8(const bmp::image &image, bmp::i8pixeldata &i8data);
 	void generate24(const bmp::image &image, bmp::pixeldata &data);
 
 	void render(const bmp::image &image);
 }
 
-std::ostream& operator<<(std::ostream &out, bin &data);
-std::ostream& operator<<(std::ostream &out, bmp::fileheader &header);
-std::ostream& operator<<(std::ostream &out, bmp::fileheader &header);
-std::ostream& operator<<(std::ostream &out, bmp::colorBGRA &entry);
-std::ostream& operator<<(std::ostream &out, bmp::colortable &ct);
-std::ostream& operator<<(std::ostream &out, bmp::image &image);
+std::ostream& operator<<(std::ostream &out, const bin &data);
+std::ostream& operator<<(std::ostream &out, const bmp::fileheader &header);
+std::ostream& operator<<(std::ostream &out, const bmp::fileheader &header);
+std::ostream& operator<<(std::ostream &out, const bmp::colorBGRA &entry);
+std::ostream& operator<<(std::ostream &out, const bmp::colortable &ct);
+std::ostream& operator<<(std::ostream &out, const bmp::image &image);
 
 #endif // !BITMAP_H
