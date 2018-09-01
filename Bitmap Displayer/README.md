@@ -4,7 +4,7 @@
 
 ![Bitmap Displayer](/Screenshots/BitmapDisplayer1.png?raw=true "Screenshot")
 
-Displays bitmap images (currently limited to 24 bit and 8 bit colour) in the command line.
+Displays bitmap images (currently limited to 24 bit true colour and 8, 4 & 1 bit indexed colour) in the command line.
 
 ## Current Limitations
 * You will need 
@@ -24,7 +24,6 @@ command line arguments.
 ## Todo list
 
 - [x] Allow for user input of filenames. *(can be done via command line arguments)*
-- [ ] Support non 24 bit colour bitmap images with colour tables.
-*(8 bit colour indexed images now work, 1 bit does not, and 4 bit has yet to be implemented)*
+- [x] Support non 24 bit colour bitmap images with colour tables.
 - [ ] Automatically change font size, buffer size, and window size.
 - [ ] Add cmake file.
