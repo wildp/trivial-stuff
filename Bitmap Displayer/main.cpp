@@ -7,6 +7,8 @@
 #include "bitmap.h"
 #include "print.h"
 
+#define DEBUG 0
+
 // Read binary data and write to an empty bin
 int read(const std::string &filename, bin &data)
 {
@@ -49,8 +51,9 @@ void view(std::string &filename)
 		bmp::image image;
 		bmp::extract(data, image);
 
-		//std::cout << image << '\n';//
-
+#if DEBUG
+		std::cout << image << '\n';
+#endif
 
 		bmp::render(image);
 	}
