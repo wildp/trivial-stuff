@@ -24,6 +24,7 @@
 #define SPACER "         "
 #define MINI_SPACER "  "
 #define LINES_CLEARED 60
+#define MINI_LINES_CLEARED 15
 
 
 namespace Text
