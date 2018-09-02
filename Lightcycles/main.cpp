@@ -286,27 +286,27 @@ int menu(const handleHolder &hand, short &gameSpeed)
 		if (GetKeyState('2') < 0)
 		{
 			players = 2;
-			cls(hand, 10, 3);
+			cls(hand, MINI_LINES_CLEARED, 3);
 			std::cout << "\n" MINI_SPACER << Text::players[0] << '\n';
 			std::cout << MINI_SPACER << Text::menu[1];
 		}
 		if (GetKeyState('4') < 0)
 		{
 			players = 4;
-			cls(hand, 10, 3);
+			cls(hand, MINI_LINES_CLEARED, 3);
 			std::cout << "\n" MINI_SPACER << Text::players[1] << '\n';
 			std::cout << MINI_SPACER << Text::menu[1];
 		}
 		if (GetKeyState('H') < 0)
 		{
-			cls(hand, 10, 3);
+			cls(hand, MINI_LINES_CLEARED, 3);
 			for (auto line : Text::help)
 				std::cout << "\n" MINI_SPACER << line;
 			std::cout << "\n\n" MINI_SPACER << Text::menu[1];
 		}
 		if (GetKeyState('S') < 0)
 		{
-			cls(hand, 10, 3);
+			cls(hand, MINI_LINES_CLEARED, 3);
 			FlushConsoleInputBuffer(hand.in);
 
 			std::vector<int> input{ 0 };
@@ -332,7 +332,7 @@ int menu(const handleHolder &hand, short &gameSpeed)
 
 				if (GetKeyState(VK_BACK) < 0)
 				{
-					cls(hand, 10, 3);
+					cls(hand, MINI_LINES_CLEARED, 3);
 					input.clear();
 					input.push_back(0);
 					inputPrompt();
@@ -348,7 +348,7 @@ int menu(const handleHolder &hand, short &gameSpeed)
 					if (input.size() > 4)
 					{
 						gameSpeed = 0;
-						cls(hand, 10, 3);
+						cls(hand, MINI_LINES_CLEARED, 3);
 						input.clear();
 						input.push_back(0);
 						std::cout << "\n" MINI_SPACER "The entered number is too large";
@@ -368,7 +368,7 @@ int menu(const handleHolder &hand, short &gameSpeed)
 						break;
 					else
 					{
-						cls(hand, 10, 3);
+						cls(hand, MINI_LINES_CLEARED, 3);
 						input.clear();
 						input.push_back(0);
 						std::cout << "\n" MINI_SPACER "The entered number is not valid";
@@ -386,14 +386,14 @@ int menu(const handleHolder &hand, short &gameSpeed)
 		}
 		if (GetKeyState('C') < 0)
 		{
-			cls(hand, 10, 3);
+			cls(hand, MINI_LINES_CLEARED, 3);
 			for (auto line : Text::controls)
 				std::cout << "\n" MINI_SPACER << line;
 			std::cout << "\n\n" MINI_SPACER << Text::menu[1];
 		}
 		if (GetKeyState('A') < 0)
 		{
-			cls(hand, 10, 3);
+			cls(hand, MINI_LINES_CLEARED, 3);
 			for (auto line : Text::about)
 				std::cout << "\n" MINI_SPACER << line;
 			std::cout << "\n\n" MINI_SPACER << Text::menu[1];
