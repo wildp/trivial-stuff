@@ -94,7 +94,7 @@ namespace Text
 		"Licensed under the Apache License, Version 2.0                        ",
 		"                                                                      ",
 		"The latest version of the source code can be found here:              ",
-		"http://github.com/wildp/command-line-stuff/tree/master/Lightcycles    ",
+		"https://github.com/wildp/trivial-stuff/tree/master/lightcycles-cmd    ",
 	};
 
 	const std::string message[]
