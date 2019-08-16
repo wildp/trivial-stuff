@@ -16,7 +16,7 @@ A small collection of simple games and other programs.
 
 
 ## Bitmap Displayer <a name="bitmapdisplayer"></a>
-![Bitmap Displayer](/Screenshots/BitmapDisplayer1.png?raw=true "Screenshot")
+![Bitmap Displayer](/.screenshots/BitmapDisplayer1.png?raw=true "Bitmap Displayer")
 
 A program to display bitmap images on the command-line. 
 It only supports bitmaps with the `BITMAPINFOHEADER` bitmap header (40 byte header), and requires a console
@@ -27,7 +27,7 @@ For Windows 10, the program requires
 or later.
 
 ## Snake <a name="snake-cmd"></a>
-![Snake](/Screenshots/Snake1.png?raw=true "Screenshot")
+![Snake](/.screenshots/Snake1.png?raw=true "Snake")
 
 **Snake** is a game in which the player tries to eat items to increase the length of their snake.
 Only works on Windows.
