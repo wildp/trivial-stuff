@@ -2,7 +2,7 @@
 A small collection of simple games and other programs.
 
 # Table of Contents
-1. [Bitmap Displayer](#bitmapdisplayer)
+1. [Bitmap Displayer](#bitmap-displayer)
 1. [Console Minesweeper](#console-minesweeper)
 1. [Lightcycles](#lightcycles)
 1. [Lightcycles CMD](#lightcycles-cmd)
@@ -13,9 +13,7 @@ A small collection of simple games and other programs.
 
 
 
-
-
-## Bitmap Displayer <a name="bitmapdisplayer"></a>
+## Bitmap Displayer <a name="bitmap-displayer"></a>
 ![Bitmap Displayer](/.screenshots/BitmapDisplayer1.png?raw=true "Bitmap Displayer")
 
 A program to display bitmap images on the command-line. 
@@ -25,6 +23,11 @@ which supports ANSI escape sequences.
 For Windows 10, the program requires
 [Windows Insiders build 14931](https://blogs.msdn.microsoft.com/commandline/2016/09/22/24-bit-color-in-the-windows-console/)
 or later.
+
+## Lightcycles CMD <a name="lightcycles-cmd"></a>
+
+An edited version of [Snake](#snake-cmd) with some improvements to rendering on the console.
+Only works on Windows.
 
 ## Snake <a name="snake-cmd"></a>
 ![Snake](/.screenshots/Snake1.png?raw=true "Snake")
