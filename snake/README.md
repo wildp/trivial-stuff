@@ -2,7 +2,7 @@
 
 This version of snake makes use of the Windows API.
 
-![Snake](/Screenshots/Snake1.png?raw=true "Screenshot")
+![Snake](/.screenshots/Snake1.png?raw=true "Snake")
 
 ### Controls
 * W to move upward.
