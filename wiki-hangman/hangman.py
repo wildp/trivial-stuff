@@ -14,7 +14,7 @@
 
 # hangman.py
 # by Peter Wild
-link = "https://github.com/wildp/wiki-hangman"
+link = "https://github.com/wildp/trivial-stuff/tree/master/wiki-hangman"
 
 
 
