@@ -7,8 +7,8 @@ A small collection of simple games and other programs.
 1. [Lightcycles](#lightcycles)
 1. [Lightcycles CMD](#lightcycles-cmd)
 1. [Lightcycles++](#lightcyclesplusplus)
+1. [Pong Clone](#pong-clone)
 1. [Snake](#snake-cmd)
-1. [Pong Clone](#pongclone)
 1. [Wiki Hangman](#wiki-hangman)
 
 
@@ -24,13 +24,38 @@ For Windows 10, the program requires
 [Windows Insiders build 14931](https://blogs.msdn.microsoft.com/commandline/2016/09/22/24-bit-color-in-the-windows-console/)
 or later.
 
+
+
 ## Lightcycles CMD <a name="lightcycles-cmd"></a>
 
 An edited version of [Snake](#snake-cmd) with some improvements to rendering on the console.
 Only works on Windows.
+
+
+
+## Pong Clone <a name="pong-clone"></a>
+
+![Pong Clone](/.screenshots/PongClone2.png?raw=true "Pong Clone")
+
+A two player pong clone written in Python with Pygame. See [this](../master/.docs/Pong%20Help.md) for more details.
+
+
 
 ## Snake <a name="snake-cmd"></a>
 ![Snake](/.screenshots/Snake1.png?raw=true "Snake")
 
 **Snake** is a game in which the player tries to eat items to increase the length of their snake.
 Only works on Windows.
+
+
+# Wiki Hangman <a name="wiki-hangman"></a>
+
+```
+      ┌────┐ 
+      │    O 
+      │   /█\ 
+      │   / \ 
+  ────┴─────── 
+```
+Console-based Hangman with random words sourced from Wiktionary, written in Python 3.
+
