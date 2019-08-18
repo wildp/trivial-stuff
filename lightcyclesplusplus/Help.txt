@@ -1,0 +1,58 @@
+Lightcycles++
+
+General Controls
+
+SPACEBAR  to start/continue
+BACKSPACE to pause/unpause
+ESCAPE    to exit (same as closing with red X)
+
+Player Controls
+
+PLAYER 1 (blue)   use     W A S D
+PLAYER 2 (orange) use     ARROW KEYS
+PLAYER 3 (green)  use     NUMPAD 8 4 5 6
+PLAYER 4 (purple) use     U H J K
+
+
+Use @ in Command Line Arguments to enable fullscreen, and set a suitable grid size and
+scale for the game. This overrides any custom grid sizes, scales and window modes.
+
+
+Command Line Arguments (most prefixed with -)
+
+To set grid dimensions:
+Use -x[uint] to set the width of the grid  (default 100)
+    -y[uint] to set the height of the grid (default 100)
+    -z[uint] to set both the width and height of the grid at the same time.
+
+To set grid scale:
+Use -g[uint] set pixels per square in the grid (default 8)
+
+To set game speed:
+Use -s[uint] to set delay between each frame (in ms) (default 30)
+
+To set number of games to play to:
+Use -w[uint] to set number of games to play to	(default 3)
+
+To set number of players:
+Use -p[uint] (max 4, min 1, default 4)
+Note: only 2 or 4 players should be used
+
+To enable flash upon player death:
+Use -f[uint] to set number of frames to display flash for (default 0)
+
+To enable certain modes: (all default false)
+Use -n[bool] to reduce menus. 				
+Use -d[bool] to delete trails upon player death
+Use -l[bool] to relaunch the game on closing
+
+To set window mode:
+Use -m[uint] (default 0)
+Where the uint entered corresponds to a window mode
+    0 Normal Window
+    1 Borderless Window
+    2 Fullscreen
+
+To set target grid scale for fullscreen:
+Use -a[uint] (default 10)
+Note: The target scale will not always be used, but the actual scale always will be less
