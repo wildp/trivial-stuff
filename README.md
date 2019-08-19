@@ -24,14 +24,19 @@ For Windows 10, the program requires
 [Windows Insiders build 14931](https://blogs.msdn.microsoft.com/commandline/2016/09/22/24-bit-color-in-the-windows-console/)
 or later.
 
+## Lightcycles <a name="lightcycles"></a>
 
+A multiplayer game like Snake, written in Python with Pygame. See [this][lightcycles-collection]
+for more details and comparison of different versions.
 
 ## Lightcycles CMD <a name="lightcycles-cmd"></a>
 
 An edited version of [Snake](#snake-cmd) with some improvements to rendering on the console.
 Only works on Windows.
 
+## Lightcycles++ <a name="lightcyclesplusplus"></a>
 
+A remake of the of [Lightcycles](#kightcycles) written in C++ with SDL2. See [this][lightcycles-collection] for more details.
 
 ## Pong Clone <a name="pong-clone"></a>
 
@@ -39,13 +44,11 @@ Only works on Windows.
 
 A two player pong clone written in Python with Pygame. See [this](../master/.docs/Pong%20Help.md) for more details.
 
-
-
 ## Snake <a name="snake-cmd"></a>
 ![Snake](/.screenshots/Snake1.png?raw=true "Snake")
 
 **Snake** is a game in which the player tries to eat items to increase the length of their snake.
-Only works on Windows.
+Runs on the Windows Command Prompt  (or Powershell).
 
 
 # Wiki Hangman <a name="wiki-hangman"></a>
@@ -59,3 +62,7 @@ Only works on Windows.
 ```
 Console-based Hangman with random words sourced from Wiktionary, written in Python 3.
 
+
+
+
+[lightcycles-collection]:../master/.docs/Lightcycles%20Collection.md
