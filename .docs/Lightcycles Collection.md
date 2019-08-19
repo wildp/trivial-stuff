@@ -3,7 +3,7 @@ A basic multiplayer game similar to snake.
 
 ## Comparison between versions
 
-**Version** | **[Lightcycles](#lightcycles)** | **[Lightcycles++](#lightcyclesplusplus)** | **[Command-line <br> Lightcycles](#lighcycles-cmd)**
+**Version** | **[Lightcycles](#lightcycles)** | **[Lightcycles++](#lightcyclesplusplus)** | **[Command-line <br> Lightcycles](#lightcycles-cmd)**
 :---|:---|:---|:---|
 Number of players: | 2 or 4 | 2 or 4 | 2 or 4 |
 Control scheme: | WASD<br>Arrow Keys<br>Numpad 8456<br>UHJK | WASD<br>Arrow Keys<br>Numpad 8456<br>UHJK |WASD<br>Arrow Keys<br>Numpad 8456<br>UHJK |
