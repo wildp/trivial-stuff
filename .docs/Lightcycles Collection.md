@@ -124,6 +124,6 @@ Note: The target scale will not always be used, but the actual scale always will
 
 A version of lightcycles made from recycling code from
 [Snake](https://github.com/wildp/trivial-stuff/blob/master/README.md#snake-)
-and the collision detection from Lightcycles++. It runs on windows only,
+and the collision detection from Lightcycles++. It runs on Windows only,
 and uses the same controls as the other games
 
