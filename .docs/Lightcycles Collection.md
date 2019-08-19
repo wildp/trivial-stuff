@@ -18,7 +18,7 @@ Language written in: | Python | C++ | C++ |
 Dependencies: | Pygame | SDL2<br>SDL_ttf | Windows |
 Relative file size: | Quite Small | Quite Large | Smallish |
 
-## Lightcycles <a name="lightcycles"></a>
+## [Lightcycles](../lightcycles "Go to source") <a name="lightcycles"></a>
 Written in Python with [Pygame], this is the original version.
 
 ```python
@@ -44,7 +44,7 @@ The infinite launch script exists to automatically reopen lightcyles after a gam
 
 [Pygame]:https://www.pygame.org/wiki/GettingStarted
 
-## Lightcycles++ <a name="lightcyclesplusplus"></a>
+## [Lightcycles++](../lightcyclesplusplus "Go to source") <a name="lightcyclesplusplus"></a>
 The remake of Lightcycles.py, in C++ using [SDL2] and [SDL_ttf].
 
 ### Features
@@ -120,7 +120,7 @@ Note: The target scale will not always be used, but the actual scale always will
 [SDL2]:https://www.libsdl.org/index.php
 [SDL_ttf]:https://www.libsdl.org/projects/SDL_ttf/
 
-## Command-line Lightcycles <a name="lightcycles-cmd"></a>
+## [Command-line Lightcycles](../lightcycles-cmd "Go to source") <a name="lightcycles-cmd"></a>
 
 A version of lightcycles made from recycling code from
 [Snake](https://github.com/wildp/trivial-stuff/blob/master/README.md#snake-)
