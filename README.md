@@ -26,7 +26,7 @@ or later.
 
 ## Lightcycles <a name="lightcycles"></a>
 
-A multiplayer game like Snake, written in Python with Pygame. See [this][lightcycles-collection]
+A local multiplayer game like Snake, written in Python with Pygame. See [this][lightcycles-collection]
 for more details and comparison of different versions.
 
 ## Lightcycles CMD <a name="lightcycles-cmd"></a>
@@ -36,7 +36,7 @@ Only works on Windows.
 
 ## Lightcycles++ <a name="lightcyclesplusplus"></a>
 
-A remake of the of [Lightcycles](#kightcycles) written in C++ with SDL2. See [this][lightcycles-collection] for more details.
+A remake of [Lightcycles](#kightcycles), written in C++ with SDL2. See [this][lightcycles-collection] for more details.
 
 ## Pong Clone <a name="pong-clone"></a>
 
