@@ -10,7 +10,7 @@ include_directories(${PROJECT_BINARY_DIR})
 include_directories(${SDL2_INCLUDE_DIR})
 include_directories(${SDL_TTF_INCLUDE_DIR})
 
-set(SOURCE_FILES main.cpp. game.cpp log.cpp player.cpp text.cpp)
+set(SOURCE_FILES main.cpp game.cpp log.cpp player.cpp text.cpp)
 
 if (WIN32)
     add_executable(${PROJECT_NAME} WIN32 ${SOURCE_FILES})
