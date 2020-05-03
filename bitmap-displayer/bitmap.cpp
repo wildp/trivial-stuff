@@ -1,3 +1,4 @@
+#include <climits>
 #include <cstdint>
 #include <iomanip>
 #include <iostream>
@@ -121,7 +122,7 @@ namespace bmp
 
 		if (image.file.file_type[0] != 'B' || image.file.file_type[1] != 'M')
 		{
-			std::cerr << "Error: Image is not a valid bitmap file\n";
+			std::wcerr << "Error: Image is not a valid bitmap file\n";
 			return 1; // abort: not BM
 		}
 			
@@ -135,7 +136,7 @@ namespace bmp
 
 		if (image.info.header_size != 40)
 		{
-			std::cerr << "Error: Image does not use BITMAPINFOHEADER - other headers are not yet supported\n";
+			std::wcerr << "Error: Image does not use BITMAPINFOHEADER - other headers are not yet supported\n";
 			return 1; // abort: not BITMAPINFOHEADER
 		}
 
@@ -145,8 +146,8 @@ namespace bmp
 
 		if (image.info.color_planes != 1)
 		{
-			std::cerr << "Error: Image does not have one colour plane\n";
-			return 1; // abort: doesnt  have 1 color plane
+			std::wcerr << "Error: Image does not have one colour plane\n";
+			return 1; // abort: doesn't  have 1 color plane
 		}
 
 		image.info.bits_per_pixel = convert2(data[28], data[29]);
@@ -323,7 +324,6 @@ namespace bmp
 		{
 			bmp::pixeldata data;
 			bmp::generate24(image, data);
-			//std::cout << data;
 			return print::bitmap(image, data);
 		}
 

@@ -21,7 +21,7 @@ int read(const std::string &filename, bin &data)
 		std::streamoff length = image.tellg();
 		image.seekg(0, std::ios::beg);
 
-		//std::cout << "Image " << filename << " has a size of " << length << " bytes\n";//
+		//std::wcout << "Image " << filename << " has a size of " << length << " bytes\n";//
 
 		char * buffer = new char[length];
 		image.read(buffer, length);
@@ -52,7 +52,7 @@ void view(std::string &filename)
 		bmp::extract(data, image);
 
 #if DEBUG
-		std::cout << image << '\n';
+		std::wcout << image << '\n';
 #endif
 
 		bmp::render(image);
@@ -65,16 +65,17 @@ int main(int argc, char *argv[])
 	print::setup();
 	std::string filename{ "Test.bmp" };
 
-	if (argc = 2)
+	if (argc == 2)
 	{
 		filename = argv[1];
 		view(filename);
 	}
 	else
 	{
-		std::cerr << "Error: No file specified\n";
+		std::wcerr << "Error: No file specified\n";
 	}
-
-	system("pause");
+	
+	std::string temp{};
+	std::getline(std::cin, temp);
 	return 0;
 }

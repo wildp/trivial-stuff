@@ -1,8 +1,9 @@
 #include <cstdint>
 #include <iostream>
+#include <locale>
 #include <string>
 
-#include <chrono>
+//#include <chrono>
 
 #include "bitmap.h"
 #include "print.h"
@@ -16,7 +17,8 @@
 #endif
 
 #define ESC '\x1b'
-#define BLOCK L'\x2580'
+#define BLOCK L'\u2580'
+
 
 namespace print
 {
@@ -62,7 +64,7 @@ namespace print
 				OutMode = OriginalOutMode | RequestedOutModes;
 				if (!SetConsoleMode(Out, OutMode))
 				{
-					std::cerr << "Unable to set VT mode.\n";
+					std::wcerr << "Unable to set VT mode.\n";
 					return -1;
 				}
 			}
@@ -70,7 +72,7 @@ namespace print
 			//DWORD InMode = OriginalInMode | ENABLE_VIRTUAL_TERMINAL_INPUT;
 			//if (!SetConsoleMode(In, InMode))
 			//{
-			//	std::cerr << "Unable to set VT mode.\n";
+			//	std::wcerr << "Unable to set VT mode.\n";
 			//	return -1;
 			//}
 
@@ -86,6 +88,15 @@ namespace print
 		SetConsoleTitle("Bitmap Displayer");
 		static auto status{ enableVT() };
 		// lazy method to ensure only one execution of enableVT()
+	#else
+		static auto status
+		{
+			[](){
+				std::locale::global(std::locale(""));
+				std::wcout << ESC << "]0;Bitmap Displayer\x07";
+				return true;
+			}()
+		};
 	#endif
 		return;
 	}
@@ -138,30 +149,34 @@ namespace print
 		return;
 	}
 
+	inline void resetcolor()
+	{
+		static std::wstring reset{ ESC ,'[','0','m' };
+		std::wcout << reset;
+	}
+
 	inline void setmode(bool isWide)
 	{
-		std::cerr << std::flush;
-		std::cout << std::flush;
+#ifdef _WIN32
+		std::wcerr << std::flush;
 		std::wcout << std::flush;
 	
 		if (isWide == true)
 		{
-	#ifdef _WIN32
+
 			_setmode(_fileno(stdout), _O_U16TEXT);
-	#endif
 		}
 		else
 		{
-	#ifdef _WIN32
 			_setmode(_fileno(stdout), _O_TEXT);
-	#endif
 		}
+	#endif
 		return;
 	}
 	
 	void bitmap(const bmp::image &image, bmp::pixeldata &data)
 	{
-		auto start{ std::chrono::system_clock::now() };
+		//auto start{ std::chrono::system_clock::now() };
 	
 		setmode(true);
 		uint32_t width{ image.info.width };
@@ -195,7 +210,6 @@ namespace print
 	
 				index1 = 0 + ((height - y - 1) * width);
 	
-				setcolorBG(bmp::colorBGRA{0, 0, 0, 255});
 				for (uint32_t x{ 0 }; x < width; ++x)
 				{
 					setcolorFG(data[index1]);
@@ -204,24 +218,24 @@ namespace print
 					++index1;
 				}
 			}
+			
+			resetcolor();
 			std::wcout << L'\n';
 		}
 	
-		std::wstring reset{ ESC ,'[','0','m' };
-		std::wcout << reset;
 		setmode(false);
 	
-		auto end = std::chrono::system_clock::now();
-		auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+		// auto end = std::chrono::system_clock::now();
+		// auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 	
-		std::cout << "\nTime taken: " << duration.count() << " ms\n\n";
+		// std::cout << "\nTime taken: " << duration.count() << " ms\n\n";
 	
 		return;
 	}
 	
 	void bitmap(const bmp::image &image, bmp::i1pixeldata &idata)
 	{
-		auto start{ std::chrono::system_clock::now() };
+		//auto start{ std::chrono::system_clock::now() };
 
 		setmode(true);
 		uint32_t width{ image.info.width };
@@ -252,7 +266,6 @@ namespace print
 			{
 				static unsigned int index1;
 				index1 = 0 + ((height - y - 1) * width);
-				setcolorBG(bmp::colorBGRA{ 0, 0, 0, 255 });
 
 				for (uint32_t x{ 0 }; x < width; ++x)
 				{
@@ -260,17 +273,17 @@ namespace print
 					++index1;
 				}
 			}
+
+			resetcolor();
 			std::wcout << L'\n';
 		}
-
-		std::wstring reset{ ESC ,'[','0','m' };
-		std::wcout << reset;
+		
 		setmode(false);
 
-		auto end = std::chrono::system_clock::now();
-		auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+		// auto end = std::chrono::system_clock::now();
+		// auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
 
-		std::cout << "\nTime taken: " << duration.count() << " ms\n\n";
+		// std::cout << "\nTime taken: " << duration.count() << " ms\n\n";
 
 		return;
 	}
