@@ -32,7 +32,6 @@ namespace Docs
 
 	const std::string help[]
 	{
-#if (SHORT_DOCS != 1)
 		"Minesweeper is a single player video game which has its origins in the mainframe",
 		"games of the 1960s and 1970s. The aim of minesweeper is to clear a rectangular  ",
 		"board containing mines without detonating any of them, with the help of squares ",
@@ -106,10 +105,6 @@ namespace Docs
 		"                                                                                ",
 		"Here is a good website for minesweeper strategy:                                ",
 		"http://www.minesweeper.info/wiki/Strategy                                       "
-#else
-		"The help text can be found online at:                                           ",
-		"https://github.com/wildp/console-minesweeper/blob/master/HELP.md                "
-#endif
 	};
 
 	const std::string credits[]
