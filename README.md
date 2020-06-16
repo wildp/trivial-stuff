@@ -24,6 +24,12 @@ For Windows 10, the program requires
 [Windows Insiders build 14931](https://blogs.msdn.microsoft.com/commandline/2016/09/22/24-bit-color-in-the-windows-console/)
 or later.
 
+## Console Minesweeper <a name="#console-minesweeper"></a>
+
+![Console Minesweeper](/.screenshots/ConsoleMinesweeper3.png?raw=true "Console Minesweeper")
+
+A text based minesweeper game, originally for the windows command prompt. For instructions, see [this][console-minesweeper-help].
+
 ## Lightcycles <a name="lightcycles"></a>
 
 A local multiplayer game like Snake, written in Python with Pygame. See [this][lightcycles-collection]
@@ -36,7 +42,7 @@ Only works on Windows.
 
 ## Lightcycles++ <a name="lightcyclesplusplus"></a>
 
-A remake of [Lightcycles](#kightcycles), written in C++ with SDL2. See [this][lightcycles-collection] for more details.
+A remake of [Lightcycles](#lightcycles), written in C++ with SDL2. See [this][lightcycles-collection] for more details.
 
 ## Pong Clone <a name="pong-clone"></a>
 
@@ -66,3 +72,4 @@ Console-based Hangman with random words sourced from Wiktionary, written in Pyth
 
 
 [lightcycles-collection]:../master/.docs/Lightcycles%20Collection.md
+[console-minesweeper-help]:../master/.docs/Minesweeper%20Help.md
