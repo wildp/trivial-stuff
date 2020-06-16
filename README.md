@@ -24,7 +24,7 @@ For Windows 10, the program requires
 [Windows Insiders build 14931](https://blogs.msdn.microsoft.com/commandline/2016/09/22/24-bit-color-in-the-windows-console/)
 or later.
 
-## Console Minesweeper <a name="#console-minesweeper"></a>
+## Console Minesweeper <a name="console-minesweeper"></a>
 
 ![Console Minesweeper](/.screenshots/ConsoleMinesweeper3.png?raw=true "Console Minesweeper")
 
