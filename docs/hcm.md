@@ -141,4 +141,4 @@ Here is a good website for minesweeper strategy:
 
 http://www.minesweeper.info/wiki/Strategy
 
-<br>[**Back**](..)
+<br>[**Back**](.)
