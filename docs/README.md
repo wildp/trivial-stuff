@@ -14,7 +14,7 @@ A small collection of simple games and other programs.
 
 
 ## Bitmap Displayer <a name="bitmap-displayer"></a>
-![Bitmap Displayer](/.screenshots/BitmapDisplayer1.png?raw=true "Bitmap Displayer")
+![Bitmap Displayer](images/bitmap-displayer-1.png?raw=true "Bitmap Displayer")
 
 A program to display bitmap images on the command-line. 
 It only supports bitmaps with the `BITMAPINFOHEADER` bitmap header (40 byte header), and requires a console
@@ -26,13 +26,13 @@ or later.
 
 ## Console Minesweeper <a name="console-minesweeper"></a>
 
-![Console Minesweeper](/.screenshots/ConsoleMinesweeper3.png?raw=true "Console Minesweeper")
+![Console Minesweeper](images/console-minesweeper-3.png?raw=true "Console Minesweeper")
 
-A text based minesweeper game, originally for the windows command prompt. For instructions, see [this][console-minesweeper-help].
+A text based minesweeper game, originally for the windows command prompt. For instructions, see [this help page][console-minesweeper-help].
 
 ## Lightcycles <a name="lightcycles"></a>
 
-A local multiplayer game like Snake, written in Python with Pygame. See [this][lightcycles-collection]
+A local multiplayer game like Snake, written in Python with Pygame. See [this page][lightcycles-collection]
 for more details and comparison of different versions.
 
 ## Lightcycles CMD <a name="lightcycles-cmd"></a>
@@ -42,16 +42,16 @@ Only works on Windows.
 
 ## Lightcycles++ <a name="lightcyclesplusplus"></a>
 
-A remake of [Lightcycles](#lightcycles), written in C++ with SDL2. See [this][lightcycles-collection] for more details.
+A remake of [Lightcycles](#lightcycles), written in C++ with SDL2. See [this page][lightcycles-collection] for more details.
 
 ## Pong Clone <a name="pong-clone"></a>
 
-![Pong Clone](/.screenshots/PongClone2.png?raw=true "Pong Clone")
+![Pong Clone](images/pong-clone-2.png?raw=true "Pong Clone")
 
-A two player pong clone written in Python with Pygame. See [this](../master/.docs/Pong%20Help.md) for more details.
+A two player pong clone written in Python with Pygame. See [this page](../master/.docs/Pong%20Help.md) for more details.
 
 ## Snake <a name="snake-cmd"></a>
-![Snake](/.screenshots/Snake1.png?raw=true "Snake")
+![Snake](images/snake-1.png?raw=true "Snake")
 
 **Snake** is a game in which the player tries to eat items to increase the length of their snake.
 Runs on the Windows Command Prompt  (or Powershell).
@@ -71,5 +71,5 @@ Console-based Hangman with random words sourced from Wiktionary, written in Pyth
 
 
 
-[lightcycles-collection]:../master/.docs/Lightcycles%20Collection.md
-[console-minesweeper-help]:../master/.docs/Minesweeper%20Help.md
+[lightcycles-collection]:lightcycles-collection.md
+[console-minesweeper-help]:minesweeper-help.md

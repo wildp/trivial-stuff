@@ -13,7 +13,7 @@ A pong clone written in Python with Pygame.
 
 ## Screenshots
 
-![Main Menu](/.screenshots/PongClone1.png?raw=true "Main Menu")
-![In Game](/.screenshots/PongClone2.png?raw=true "In Game")
+![Main Menu](images/pong-clone-1.png?raw=true "Main Menu")
+![In Game](/images/pong-clone-2.png?raw=true "In Game")
 
 [Instructions to get Pygame](https://www.pygame.org/wiki/GettingStarted "GettingStarted — pygame wiki").
