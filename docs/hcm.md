@@ -1,8 +1,8 @@
---
-layout: page
+---
+layout: default
 title: "Minesweeper Help | Trivial Stuff"
-permalink: /minesweeper-help/
---
+permalink: /minesweeper-help
+---
 
 *The following text has been copied verbatim from the help option of the menu.*
 
@@ -140,3 +140,5 @@ mines being 1 and the maximum being the number of squares in the board - 1.
 Here is a good website for minesweeper strategy:
 
 http://www.minesweeper.info/wiki/Strategy
+
+<br>[**Back**](..)

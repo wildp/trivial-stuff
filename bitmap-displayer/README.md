@@ -1,6 +1,6 @@
 # Bitmap Displayer
 
-![Bitmap Displayer](/.screenshots/BitmapDisplayer1.png?raw=true "Screenshot")
+![Bitmap Displayer](../docs/images/bitmap-displayer-1.png?raw=true "Screenshot")
 
 Displays bitmap images (currently limited to 24 bit true colour and 8, 4 & 1 bit indexed colour) in the command line.
 

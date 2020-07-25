@@ -1,8 +1,8 @@
---
-layout: page
-title: "Lightcycles Collection | Trivial Stuff"
-permalink: /lightcycles-collection/
---
+---
+layout: default
+title: "Lightcycles Collection"
+permalink: /lightcycles-collection
+---
 
 # Lightcycles Collection
 A basic multiplayer game similar to snake.
@@ -24,33 +24,33 @@ Language written in: | Python | C++ | C++ |
 Dependencies: | Pygame | SDL2<br>SDL_ttf | Windows |
 Relative file size: | Quite Small | Quite Large | Smallish |
 
-## [Lightcycles](../lightcycles "Go to source") <a name="lightcycles"></a>
+## [Lightcycles](https://github.com/wildp/trivial-stuff/tree/master/lightcycles "Go to source") <a name="lightcycles"></a>
 Written in Python with [Pygame], this is the original version.
 
 ```python
-    controls  = [[100 , 97, 119, 115], #WASD        - Blue
-                 [275, 276, 273, 274], #ARROW KEYS  - Orange
-                 [262, 260, 264, 261], #NUMPAD 8456 - Green
-                 [107, 104, 117, 106]] #UHJK        - Purple
+controls  = [[100 , 97, 119, 115], #WASD        - Blue
+             [275, 276, 273, 274], #ARROW KEYS  - Orange
+             [262, 260, 264, 261], #NUMPAD 8456 - Green
+             [107, 104, 117, 106]] #UHJK        - Purple
 ```
 To change settings, edit Lightcycles.py
 
 ```python
-    ### Game settings     ###
-    player_count  = 4       # Normally 2 but could be 4. 3 is unfair, and 1 is snake without food.
-    style_name    = "dark"  # Can be either "dark" or "lght".
-    destroy_trail = False   # Can be either True or False.
-    scale         = 8       # Default = 8    NOTE: scale * grid should be smaller than the monitor resolution.
-    grid          = 100     # Default = 100  NOTE: Ideally an even number.
-    midway        = grid/2  # Default = 50   NOTE: Should be the midpoint of grid.
-    tick_speed    = 30      # Default = 30   NOTE: Larger grids should have higher tick_speed.
-    ### Game settings END ###
+### Game settings     ###
+player_count  = 4       # Normally 2 but could be 4. 3 is unfair, and 1 is snake without food.
+style_name    = "dark"  # Can be either "dark" or "lght".
+destroy_trail = False   # Can be either True or False.
+scale         = 8       # Default = 8    NOTE: scale * grid should be smaller than the monitor resolution.
+grid          = 100     # Default = 100  NOTE: Ideally an even number.
+midway        = grid/2  # Default = 50   NOTE: Should be the midpoint of grid.
+tick_speed    = 30      # Default = 30   NOTE: Larger grids should have higher tick_speed.
+### Game settings END ###
 ```
 The infinite launch script exists to automatically reopen lightcyles after a game has been won.
 
 [Pygame]:https://www.pygame.org/wiki/GettingStarted
 
-## [Lightcycles++](../lightcyclesplusplus "Go to source") <a name="lightcyclesplusplus"></a>
+## [Lightcycles++](https://github.com/wildp/trivial-stuff/tree/master/lightcyclesplusplus "Go to source") <a name="lightcyclesplusplus"></a>
 The remake of Lightcycles.py, in C++ using [SDL2] and [SDL_ttf].
 
 ### Features
@@ -106,7 +106,7 @@ Use -f[uint] to set number of frames to display flash for (default 0)
 
 
 To enable certain modes: (all default false)
-Use -n[bool] to reduce menus. 				
+Use -n[bool] to reduce menus.
 Use -d[bool] to delete trails upon player death
 Use -l[bool] to relaunch the game on closing
 
@@ -126,10 +126,12 @@ Note: The target scale will not always be used, but the actual scale always will
 [SDL2]:https://www.libsdl.org/index.php
 [SDL_ttf]:https://www.libsdl.org/projects/SDL_ttf/
 
-## [Command-line Lightcycles](../lightcycles-cmd "Go to source") <a name="lightcycles-cmd"></a>
+## [Command-line Lightcycles](https://github.com/wildp/trivial-stuff/tree/master/lightcycles-cmd "Go to source") <a name="lightcycles-cmd"></a>
 
 A version of lightcycles made from recycling code from
 [Snake](https://github.com/wildp/trivial-stuff/blob/master/README.md#snake-)
 and the collision detection from Lightcycles++. It runs on Windows only,
 and uses the same controls as the other games
 
+
+<br>[**Back**](..)

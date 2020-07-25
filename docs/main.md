@@ -1,8 +1,8 @@
---
-layout: page
-title: "About | Trivial Stuff"
+---
+layout: default
+title: "About"
 permalink: /
---
+---
 
 # What's here?
 A small collection of simple games and other programs.
@@ -18,7 +18,7 @@ A small collection of simple games and other programs.
 
 
 ## Bitmap Displayer <a name="bitmap-displayer"></a>
-![Bitmap Displayer](docs/images/bitmap-displayer-1.png?raw=true "Bitmap Displayer")
+![Bitmap Displayer](images/bitmap-displayer-1.png?raw=true "Bitmap Displayer")
 
 A program to display bitmap images on the command-line.
 It only supports bitmaps with the `BITMAPINFOHEADER` bitmap header (40 byte header), and requires a console
