@@ -109,7 +109,6 @@ Here is an explaination of the options:
           <td align="left">
              Grandmaster: a 36 by 36 grid with 50% mine density (648 mines). This is
              characters in base-36. This is mode is extremely difficult. Good Luck.
-
           </td>
      </tr>
      <tr>
