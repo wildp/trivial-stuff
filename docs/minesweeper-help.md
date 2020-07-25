@@ -1,3 +1,9 @@
+--
+layout: page
+title: "Minesweeper Help | Trivial Stuff"
+permalink: /minesweeper-help/
+--
+
 *The following text has been copied verbatim from the help option of the menu.*
 
 # Minesweeper Help

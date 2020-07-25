@@ -1,7 +1,12 @@
+--
+layout: page
+title: "About | Trivial Stuff"
+permalink: /
+--
+
 # What's here?
 A small collection of simple games and other programs.
 
-# Table of Contents
 1. [Bitmap Displayer](#bitmap-displayer)
 1. [Console Minesweeper](#console-minesweeper)
 1. [Lightcycles](#lightcycles)
@@ -12,11 +17,10 @@ A small collection of simple games and other programs.
 1. [Wiki Hangman](#wiki-hangman)
 
 
-
 ## Bitmap Displayer <a name="bitmap-displayer"></a>
-![Bitmap Displayer](images/bitmap-displayer-1.png?raw=true "Bitmap Displayer")
+![Bitmap Displayer](docs/images/bitmap-displayer-1.png?raw=true "Bitmap Displayer")
 
-A program to display bitmap images on the command-line. 
+A program to display bitmap images on the command-line.
 It only supports bitmaps with the `BITMAPINFOHEADER` bitmap header (40 byte header), and requires a console
 which supports ANSI escape sequences.
 
@@ -48,7 +52,7 @@ A remake of [Lightcycles](#lightcycles), written in C++ with SDL2. See [this pag
 
 ![Pong Clone](images/pong-clone-2.png?raw=true "Pong Clone")
 
-A two player pong clone written in Python with Pygame. See [this page](../master/.docs/Pong%20Help.md) for more details.
+A two player pong clone written in Python with Pygame. See [this page][pong-help] for more details.
 
 ## Snake <a name="snake-cmd"></a>
 ![Snake](images/snake-1.png?raw=true "Snake")
@@ -71,5 +75,6 @@ Console-based Hangman with random words sourced from Wiktionary, written in Pyth
 
 
 
-[lightcycles-collection]:lightcycles-collection.md
-[console-minesweeper-help]:minesweeper-help.md
+[lightcycles-collection]:lightcycles-collection
+[console-minesweeper-help]:minesweeper-help
+[pong-help]:pong-help

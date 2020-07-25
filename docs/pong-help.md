@@ -1,4 +1,10 @@
-# Pong Clone
+--
+layout: page
+title: "Pong Help | Trivial Stuff"
+permalink: /pong-help/
+--
+
+# Pong Clone Help
 A pong clone written in Python with Pygame.
 
 
@@ -14,6 +20,6 @@ A pong clone written in Python with Pygame.
 ## Screenshots
 
 ![Main Menu](images/pong-clone-1.png?raw=true "Main Menu")
-![In Game](/images/pong-clone-2.png?raw=true "In Game")
+![In Game](images/pong-clone-2.png?raw=true "In Game")
 
 [Instructions to get Pygame](https://www.pygame.org/wiki/GettingStarted "GettingStarted — pygame wiki").

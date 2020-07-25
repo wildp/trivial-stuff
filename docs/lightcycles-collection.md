@@ -1,3 +1,9 @@
+--
+layout: page
+title: "Lightcycles Collection | Trivial Stuff"
+permalink: /lightcycles-collection/
+--
+
 # Lightcycles Collection
 A basic multiplayer game similar to snake.
 
