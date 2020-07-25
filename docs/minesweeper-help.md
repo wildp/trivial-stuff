@@ -118,7 +118,7 @@ Here is an explaination of the options:
           </td>
      </tr>
      <tr>
-          <td align="left">c/td>
+          <td align="left">c</td>
           <td align="left">
             Custom: see below:
           </td>
